@@ -1,0 +1,16 @@
+1480. Running Sum of 1d Array
+
+-------------------------------------------------------------
+
+class Solution {
+public:
+    vector<int> runningSum(vector<int>& nums) {
+        
+        for(int i = 1; i<nums.size() ; i++) // We are starting from i = 1, because we don't need to change nums[0]
+        {
+            nums[i] = nums[i] + nums[i-1];
+        }
+
+        return nums;
+    }
+};
