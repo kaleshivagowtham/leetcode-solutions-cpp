@@ -1,0 +1,26 @@
+733. Flood Fill
+
+----------------------------------------------------------------------
+
+class Solution {
+public:
+
+     void floodFilling(vector<vector<int>>& image, int sr, int sc, int color,int source){
+        if(sr<0 || sc<0 || sc>=image[0].size() || sr>=image.size() || image[sr][sc] != source)           
+            return;
+        image[sr][sc] = color;
+        floodFilling(image,sr+1,sc,color,source);
+        floodFilling(image,sr,sc+1,color,source);
+        floodFilling(image,sr-1,sc,color,source);
+        floodFilling(image,sr,sc-1,color,source);
+    }
+
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        
+        if(image[sr][sc] == color) 
+            return image;
+        
+        floodFilling(image,sr,sc,color,image[sr][sc]);
+        return image;
+    }
+};
