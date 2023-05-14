@@ -1,0 +1,28 @@
+2379. Minimum Recolors to Get K Consecutive Black Blocks
+
+-----------------------------------------------------------------------
+
+class Solution {
+public:
+    int minimumRecolors(string blocks, int k) {
+        int rptr=0, lptr=0 , minOper = 0 , count = 0;
+        while(rptr<k)
+        {
+            if(blocks[rptr] == 'W')
+                count++;
+            rptr++;
+        }
+        minOper = count;
+        while(rptr < blocks.length())
+        {
+            if(blocks[lptr] == 'W')
+                count--;
+            if(blocks[rptr] == 'W')
+                count++;
+            lptr++;
+            rptr++;
+            minOper = min(minOper , count);
+        }
+        return minOper;
+    }
+};
