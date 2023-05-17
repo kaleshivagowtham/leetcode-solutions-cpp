@@ -1,0 +1,42 @@
+2130. Maximum Twin Sum of a Linked List
+
+-----------------------------------------------------
+class Solution {
+public:
+    int pairSum(ListNode* head) {
+        int maxSum = INT_MIN;
+        ListNode *lptr , *rptr;
+
+        ListNode *fptr = head, *sptr = head;
+        while(fptr->next->next != NULL) // Find the mid of the linkedlist
+        {
+            sptr = sptr->next;
+            fptr = fptr->next->next;
+        }
+
+        fptr=fptr->next;
+        ListNode *curr , *nxt , *prev; // Reverse the second half of the linkedlist
+        curr = sptr->next;
+        nxt = curr->next;
+        prev = sptr;
+        while(curr != NULL)
+        {
+            curr->next = prev;
+            prev = curr;
+            curr = nxt;
+            if(nxt!= NULL)
+                nxt = nxt->next;
+        }
+
+        lptr = head;
+        rptr = fptr;
+        while(rptr != sptr) // Use 2 pointer approach to traverse from both start and end node
+        {
+            maxSum = max(maxSum , lptr->val + rptr->val);
+            lptr = lptr->next;
+            rptr = rptr->next;
+        }
+        
+    return maxSum;
+    }
+};
