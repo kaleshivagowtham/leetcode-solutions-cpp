@@ -1,0 +1,23 @@
+58. Length of Last Word
+
+------------------------------------------------------------
+
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+
+        int lword=0 , rptr = 0, lptr=0;
+
+        while(lptr<s.length())
+        {
+            if(isalpha(s[lptr]))
+            {
+                if(lptr>0 && s[lptr-1] == ' ') lword = lptr;
+            }
+            if(isalpha(s[lptr]))rptr = lptr;
+
+            lptr++;
+        }
+        return rptr-lword+1;
+    }
+};
