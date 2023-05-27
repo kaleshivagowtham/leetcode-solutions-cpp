@@ -1,0 +1,31 @@
+33. Search in Rotated Sorted Array
+
+------------------------------------------------------------------------
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int lptr = 0, rptr = nums.size()-1 , mptr = 0;
+        while(lptr<=rptr)
+        {
+            mptr = (lptr+rptr)/2;
+            if(nums[mptr] == target) return mptr;
+
+            if(nums[lptr] <= nums[mptr])
+            {
+                if(nums[lptr] <= target && nums[mptr] >= target)
+                    rptr = mptr-1;
+                else
+                    lptr = mptr+1;
+            }
+            else
+            {
+                if(nums[mptr]<=target && nums[rptr]>=target)
+                    lptr = mptr+1;
+                else
+                    rptr = mptr-1;
+            }
+        }
+        return -1;
+    }
+};
