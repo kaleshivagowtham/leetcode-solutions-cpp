@@ -1,0 +1,22 @@
+1492. The kth Factor of n
+
+------------------------------------------------------------
+
+class Solution {
+public:
+    int kthFactor(int n, int k) {
+        
+        int count = 0 , divisor = 1 , curDiv;
+
+        while(count < k && divisor <= n)
+        {
+            if(n%divisor == 0)
+            {
+                curDiv = divisor;
+                count++;
+            }
+            divisor++;
+        }
+        return (count)==k ? curDiv : -1;
+    }
+};
