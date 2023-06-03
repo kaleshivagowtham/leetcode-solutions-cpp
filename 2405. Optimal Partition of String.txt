@@ -1,0 +1,23 @@
+2405. Optimal Partition of String
+
+-----------------------------------------------------
+
+class Solution {
+public:
+    int partitionString(string s) {
+        int minCount=0;
+        set<char> appeared;
+        for( char c : s)
+        {
+            if(appeared.find(c) == appeared.end())
+                appeared.insert(c);
+            else
+            {
+                appeared.clear();
+                appeared.insert(c);
+                minCount++;
+            }
+        }
+        return minCount+1;
+    }
+};
