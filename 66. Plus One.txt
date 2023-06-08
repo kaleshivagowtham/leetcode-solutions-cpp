@@ -1,0 +1,29 @@
+66. Plus One
+
+------------------------------------------------------
+
+class Solution {
+public:
+    void adder(vector<int>& digits ,int n) {
+
+        if(digits[n]+1 >= 10)
+        {
+            if(n == 0)
+            {
+                digits[0] = (digits[0]+1)%10;
+                digits.insert(digits.begin() , 1);
+                return;
+            }
+            digits[n] = (digits[n]+1)%10;
+            adder(digits,n-1);
+        }
+        else
+            digits[n] = digits[n]+1;
+    }
+    vector<int> plusOne(vector<int>& digits) {
+        
+        int n = digits.size()-1;
+        adder(digits, n);
+        return digits;
+    }
+};
