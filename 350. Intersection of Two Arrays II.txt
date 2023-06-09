@@ -1,0 +1,25 @@
+350. Intersection of Two Arrays II
+
+------------------------------------------------------------
+
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        
+        map<int , int> array;
+        vector<int> output;
+        for(auto i=0;i<nums1.size();i++)
+        {
+            array[nums1[i]]++;
+        }
+        for(auto i=0;i<nums2.size();i++)
+        {
+            if(array[nums2[i]] > 0 )
+            {
+                output.push_back(nums2[i]);
+                array[nums2[i]]--;
+            }
+        }
+        return output;
+    }
+};
