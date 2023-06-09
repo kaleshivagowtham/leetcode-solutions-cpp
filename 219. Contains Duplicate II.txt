@@ -1,0 +1,26 @@
+219. Contains Duplicate II
+
+--------------------------------------------------------------------
+
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        
+        int n=nums.size();
+        if(n<=1) return false;
+        if(k == 0) return false;
+        int i=0,j=1;
+        map<int , int> occured;
+        while(i<n)
+        {
+            if(occured.find(nums[i]) != occured.end())
+            {
+                if(abs(occured[nums[i]] - i) <= k)
+                    return true;
+            }
+            occured[nums[i]] = i;
+            i++;
+        }
+        return false;
+    }
+};
