@@ -1,0 +1,24 @@
+1137. N-th Tribonacci Number
+
+-------------------------------------------------------
+
+class Solution {
+public:
+    int trib(map<int,int>& table,int n)
+    {
+        if(n == 0) return 0;
+        if(n ==1 || n==2) return 1;
+        int val1 = table[n-1]>0 ? table[n-1] : trib(table,n-1);
+        int val2 = table[n-2]>0 ? table[n-2] : trib(table,n-2);
+        int val3 = table[n-3]>0 ? table[n-3] : trib(table,n-3);
+        table[n] = val1 + val2 +val3;
+        return table[n];
+    }
+    int tribonacci(int n) {
+        
+        if(n == 0) return 0;
+        if(n ==1 || n==2) return 1;
+        map<int,int> table;
+        return trib(table,n);
+    }
+};
