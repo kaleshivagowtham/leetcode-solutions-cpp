@@ -1,0 +1,22 @@
+136. Single Number
+
+-----------------------------------------------------------
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        
+        int n = nums.size();
+        map<int , int> occured;
+        for(int i=0;i<n;i++)
+        {
+            occured[nums[i]]++;
+        }
+        for(auto i : occured)
+        {
+            if(i.second == 1)
+                return i.first;
+        }
+        return 0;
+    }
+};
