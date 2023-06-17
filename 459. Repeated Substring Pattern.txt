@@ -1,0 +1,39 @@
+459. Repeated Substring Pattern
+
+------------------------------------------------------------
+
+class Solution {
+public:
+
+    bool repeatedSubstringPattern(string s) {
+        
+        int i=0,len = s.length();
+        while(i<len)
+        {
+            string str = s.substr(0,i+1);
+            int strlen= str.length(),j=0,counter;
+            if(len%strlen != 0)
+            {
+                i++;
+                continue;
+            }
+            if(len == strlen) return false;
+            counter = len/strlen;
+            while(j+strlen<=len)
+            {
+                string str2 = s.substr(j,strlen);
+                j = j+strlen;
+                if(str2 == str)
+                {
+                    counter--;
+                }
+                else
+                    break;
+            }
+            if(counter == 0)
+                return true;
+            i++;
+        }
+        return false;
+    }
+};
