@@ -1,0 +1,28 @@
+268. Missing Number
+---------------------
+
+Approach
+-----------------
+Difference of the actual sum (i.e. n(n+1)/2) and the sum of the given array is the answer.
+This works even when 0 is the missing number.
+
+Complexity
+-------------------
+Time complexity:O(n)
+Space complexity:O(1)
+
+Code
+-------------------------------
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        
+        int n = nums.size();
+        int sum=0,actSum=(n*(n+1))/2;
+        for(int i=0;i<n;i++) {
+            sum += nums[i];
+        }
+        return actSum - sum;
+    }
+};
