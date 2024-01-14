@@ -9,7 +9,7 @@ keep breaking the power to be found evenly
 - if n is even : break ```n``` into ```n/2``` and ```n/2```
 - if n is odd : break ```n``` into ```n/2``` and ```n/2 + 1```
 
-now take the tree form n to 0, and return the result on the way back from 0 to n.
+now take the tree form n to 0, and return the result on the way back from 0 to n
 
 # Complexity
 - Time complexity: O(n)
